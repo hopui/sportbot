@@ -11,7 +11,7 @@ from flask import Flask, request, make_response
 
 app = Flask(__name__)
 
-slack_token = "xoxb-502761537154-508893399238-VOwqaCQxujclArHLNiuWm5yE"
+slack_token = "xoxb-502761537154-508893399238-9KZcm5vdRL5ab8D4mUHW68Re"
 slack_client_id = "502761537154.508890214422"
 slack_client_secret = "3a6ac09ec7aed09163877182fe54f2a3"
 slack_verification = "cVdwBayYG4jCpqLOkhaWTVQE"
@@ -29,7 +29,7 @@ def answer(text):
         if a is False:
             if len(result.split(' ')) > 1 and result.split(' ')[1] == '오늘일정':
                 return today_match(result.split(' ')[0])
-            else :
+            else:
                 return detail_team(result)
         else:
             return a
@@ -51,7 +51,7 @@ def _event_handler(event_type, slack_event):
 
             for i in range(len(daily['date'])):
                 msg = {}
-                msg["title"] = daily['date']
+                msg["title"] = daily['date'][0]
                 a = " "
                 b = " "
                 if i * 2 >= len(daily['score']):

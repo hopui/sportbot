@@ -18,11 +18,13 @@ def today_match(text):
 
     day = []
     res = []
-    sche = {'date': '', 'time': [], 'name': [], 'place': [], 'score': [], 'image': []}
+    sche = {'date': [], 'time': [], 'name': [], 'place': [], 'score': [], 'image': []}
+    a = 0
 
     for i in today:
-        sche['date'].append(i.get_text().split('\n')[3])
-        day.append(i.get_text().split('\n')[3])
+        if a is 0:
+            sche['date'].append(i.get_text().split('\n')[3])
+            a += 1
 
     for i in today:
         for time in i.find_all("span",class_="time"):
