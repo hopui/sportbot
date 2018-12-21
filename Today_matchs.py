@@ -16,7 +16,6 @@ def today_match(text):
 
     today = soup.find_all("tr", class_="today")
 
-    day = []
     res = []
     sche = {'date': [], 'time': [], 'name': [], 'place': [], 'score': [], 'image': []}
     a = 0
@@ -35,11 +34,14 @@ def today_match(text):
             sche['place'].append(place.get_text())
         for score in i.find_all("span",class_="score"):
             sche['score'].append(score.get_text())
+        # try:
+        #     sche['image'].append(i.find("img")['src'])
+
 
     res.append(0)
     res.append(sche)
 
-    if len(sche['time']) ==0:
+    if len(sche['time']) == 0:
         return u'오늘 일정이 없습니다'
     else:
         return res

@@ -11,7 +11,7 @@ from flask import Flask, request, make_response
 
 app = Flask(__name__)
 
-slack_token = "xoxb-502761537154-508893399238-9KZcm5vdRL5ab8D4mUHW68Re"
+slack_token = "xoxb-502761537154-508893399238-F3JOEmg9epDQEcXxKNwVQFhq"
 slack_client_id = "502761537154.508890214422"
 slack_client_secret = "3a6ac09ec7aed09163877182fe54f2a3"
 slack_verification = "cVdwBayYG4jCpqLOkhaWTVQE"
@@ -46,7 +46,7 @@ def _event_handler(event_type, slack_event):
         text = slack_event["event"]["text"]
         # [메뉴, 딕셔너리]
         keywords = answer(text)
-        if keywords[0] == 0:
+        if keywords[0] is 0:
             daily = keywords[1]
 
             for i in range(len(daily['date'])):
@@ -57,14 +57,15 @@ def _event_handler(event_type, slack_event):
                 if i * 2 >= len(daily['score']):
                     pass
                 else:
-                    a= daily['score'][i*2]
-                    b= daily['score'][i*2+1]
+                    a = daily['score'][i*2]
+                    b = daily['score'][i*2+1]
+
                 msg["title"] = daily['time'][i] + " : " + daily['place'][i]
                 msg["fields"] = [
                     {
-                        "title" : daily['name'][i*2],
+                        "title": daily['name'][i*2],
                         "value": a,
-                        "short" : True
+                        "short": True
                     },
                     {
 
@@ -83,8 +84,6 @@ def _event_handler(event_type, slack_event):
         else:
             msg = {}
             msg["text"] = keywords
-            msg[
-                "thumb_url"] = ""
             msg["color"] = "#F36F81"
             sc.api_call(
                 "chat.postMessage",
