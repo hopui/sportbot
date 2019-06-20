@@ -5,7 +5,10 @@
 >
 > 개발자용 아카이브 메신저로 Code Snippet 지원 및 Google Drive, Trello, GitHub 등이 연동 가능합니다.
 > 이 밖에더 편리성을 증진시키는 API를 제공합니다.
-
+## 주요 기술
+> 언어 : python 3.7.2
+> Beautiful Soup, Selenium 라이브러리를 사용한 네이버 스포츠 페이지 데이터 크롤링
+>
 ## 실행화면
 > ```
 > -----ToToBot 1.1-----
@@ -30,6 +33,7 @@
 >
 > ### 2. 오늘 일정 확인
 > ![result2](./img/챗봇2.PNG)
+>
 > ### 3. 전체 일정 확인
 > ![result3](./img/캡처.PNG)
-
+>
